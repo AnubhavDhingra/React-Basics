@@ -5,14 +5,13 @@ import ShowItems from './ShowItems/ShowItems';
 import './App.css';
 
 class App extends Component {
-  state ={
-    item : '',
+  state = {
+    item: '',
     listItems: []
   };
   render() {
-    
-    const addItemHandler = () =>{
-      console.log(this.state.listItems, 'check click');
+
+    const addItemHandler = () => {
       const itemList = this.state.listItems;
       itemList.push(this.state.item)
       this.setState({
@@ -27,18 +26,34 @@ class App extends Component {
         item: event.target.value
       });
     };
-    
+
+    const deleteHandler = (index) => {
+      const itemList = this.state.listItems;
+      itemList.splice(index, 1);
+      this.setState({
+        listItems: itemList
+      });
+    }
+
+    const listItems = this.state.listItems.map((item, index) => {
+      return <div>
+        <ShowItems key={index}
+          click={() => deleteHandler(index)}
+          listItem={item}></ShowItems>
+      </div>
+    });
 
     return (
       <div className="App">
-        <AddItem click={addItemHandler}
-          change={(event)=>{changeInputHandler(event)}}
-          item={this.state.item}
-         ></AddItem>
+      <h1>To Do List</h1>
+        <div className="addCard">
+          <AddItem click={addItemHandler}
+            change={(event) => { changeInputHandler(event) }}
+            item={this.state.item}
 
-         <ShowItems listItems={this.state.listItems}>
-
-         </ShowItems>
+          ></AddItem>
+        </div>
+        {listItems}
       </div>
     );
   }

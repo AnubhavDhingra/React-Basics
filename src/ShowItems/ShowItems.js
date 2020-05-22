@@ -1,14 +1,11 @@
 import React from 'react';
+import './ShowItem.css';
 
 const showItems = (props) => {
     
-    const listItems = props.listItems.map((item,index)=> {
-        return <p key={index}>{item}</p>
-    });
-    
     return(
-        <div>
-           {listItems} 
+        <div onClick={props.click} className="Card">
+           {props.listItem} 
         </div>
     );
 }

@@ -1,3 +1,11 @@
 .App {
   text-align: center;
 }
+.addCard {
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 2px #eee;
+  width: 30%;
+  padding: 20px;
+  margin: 20px;
+}

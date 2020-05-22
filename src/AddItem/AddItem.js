@@ -1,20 +1,14 @@
 import React from 'react';
+import './AddItem.css'
 
 const addItem = (props) => {
 
-    // const [item, setItem] = useState('')
-
-    // const addItemHandler = () => {
-    //     setItem()
-    // }
-
-
     return (
         <div>
-            <button onClick={props.click}>
+            <button onClick={props.click} className="button">
                 + Add
             </button>
-            <input type="text" onChange={props.change} value={props.item}/>
+            <input type="text" className="input" onChange={props.change} value={props.item}/>
         </div>
     );
 }
